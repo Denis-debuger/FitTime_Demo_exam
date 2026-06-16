@@ -3,8 +3,7 @@
 <h1>Вход</h1>
 <form method="post" class="box">
   {% csrf_token %}
-  <p>Логин<br><input name="username" required></p>
-  <p>Пароль<br><input name="password" type="password" required></p>
+  {{ form.as_p }}
   <button class="btn btn-success">Войти</button>
   <a href="{% url 'register' %}">Регистрация</a>
 </form>
