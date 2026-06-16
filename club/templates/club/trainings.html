@@ -1,9 +1,13 @@
 {% extends 'club/base.html' %}
-{% block content %}<h1 class="h3 mb-3">Тренировки</h1>
-<div class="row g-3">
-{% for t in trainings %}<div class="col-12"><div class="card shadow-sm"><div class="card-body">
-<h5 class="card-title">{{ t.title }}</h5><p>{{ t.description }}</p>
-<p class="mb-2"><b>{{ t.price }} ₽</b> · {{ t.duration }} мин · {% if t.is_available %}<span class="text-success">доступна</span>{% else %}<span class="text-danger">недоступна</span>{% endif %}</p>
-{% if t.is_available %}<a class="btn btn-success" href="{% url 'booking_create' %}?training={{ t.id }}">Записаться</a>{% endif %}
-</div></div></div>{% empty %}<p>Тренировки пока не добавлены.</p>{% endfor %}
-</div>{% endblock %}
+{% block content %}
+<h1>Тренировки</h1>
+{% for t in trainings %}
+<div class="box">
+  <h3>{{ t.title }}</h3>
+  <p>{{ t.description }}</p>
+  <p>{{ t.price }} ₽, {{ t.duration }} мин.</p>
+  <p>{% if t.is_available %}Доступна{% else %}Недоступна{% endif %}</p>
+  {% if t.is_available %}<a class="btn btn-success" href="{% url 'booking_create' %}?training={{ t.id }}">Записаться</a>{% endif %}
+</div>
+{% empty %}<p>Тренировок пока нет.</p>{% endfor %}
+{% endblock %}
