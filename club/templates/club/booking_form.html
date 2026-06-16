@@ -1,0 +1,6 @@
+{% extends 'club/base.html' %}{% load form_tags %}
+{% block content %}<h1 class="h3 mb-3">Оформление записи</h1>
+<form method="post" class="card p-3 shadow-sm">{% csrf_token %}
+{% for field in form %}<div class="mb-3"><label class="form-label">{{ field.label }}</label>{{ field|add_class:'form-control' }}<div class="text-danger small">{{ field.errors }}</div></div>{% endfor %}
+<button class="btn btn-success">Записаться</button>
+</form>{% endblock %}

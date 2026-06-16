@@ -1,0 +1,13 @@
+{% extends 'club/base.html' %}
+{% block content %}
+<div id="info" class="carousel slide mb-4" data-bs-ride="carousel">
+  <div class="carousel-inner rounded-4">
+    <div class="carousel-item active bg-dark text-white p-5"><h2>FitTime</h2><p>Онлайн-запись на тренировки в пару кликов.</p></div>
+    <div class="carousel-item bg-success text-white p-5"><h2>Преимущества</h2><p>Удобное расписание, понятные цены и быстрый личный кабинет.</p></div>
+    <div class="carousel-item bg-light p-5"><h2 class="text-green">Акция</h2><p>Первичное посещение — отличный старт для новых клиентов.</p></div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#info" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+  <button class="carousel-control-next" type="button" data-bs-target="#info" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+</div>
+<div class="d-grid gap-2"><a class="btn btn-success btn-lg" href="{% url 'trainings' %}">Выбрать тренировку</a><a class="btn btn-outline-dark" href="{% url 'register' %}">Регистрация</a></div>
+{% endblock %}

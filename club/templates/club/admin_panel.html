@@ -1,0 +1,10 @@
+{% extends 'club/base.html' %}
+{% block content %}<h1 class="h3 mb-3">Панель администратора</h1>
+{% for b in bookings %}<div class="card mb-3 shadow-sm"><div class="card-body">
+<h5>{{ b.client.profile.name }} — {{ b.training.title }}</h5>
+<p class="small mb-2">{{ b.client.profile.phone }} · {{ b.client.email }}<br>{{ b.visit_at|date:'d.m.Y H:i' }} · {{ b.get_visit_type_display }}<br>{{ b.comment|default:'Без комментария' }}</p>
+<form method="post" action="{% url 'change_status' b.id %}" class="d-flex gap-2">{% csrf_token %}
+<select name="status" class="form-select">{% for value, label in b.STATUSES %}<option value="{{ value }}" {% if b.status == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select>
+<button class="btn btn-success">Сохранить</button></form>
+</div></div>{% empty %}<p>Записей пока нет.</p>{% endfor %}
+{% endblock %}

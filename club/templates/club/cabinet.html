@@ -1,0 +1,7 @@
+{% extends 'club/base.html' %}
+{% block content %}<h1 class="h3 mb-3">Личный кабинет</h1><a class="btn btn-success mb-3" href="{% url 'booking_create' %}">Новая запись</a>
+{% for b in bookings %}<div class="card mb-3 shadow-sm"><div class="card-body">
+<h5>{{ b.training.title }}</h5><p class="mb-1">{{ b.visit_at|date:'d.m.Y H:i' }} · {{ b.get_visit_type_display }}</p>
+<p class="mb-1">{{ b.comment|default:'Без комментария' }}</p><span class="badge bg-success">{{ b.get_status_display }}</span>
+</div></div>{% empty %}<p>У вас пока нет записей.</p>{% endfor %}
+{% endblock %}
