@@ -1,0 +1,9 @@
+{% extends 'club/base.html' %}
+{% block content %}
+<h1>Запись на тренировку</h1>
+<form method="post" class="box">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-success">Записаться</button>
+</form>
+{% endblock %}

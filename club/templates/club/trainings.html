@@ -1,0 +1,13 @@
+{% extends 'club/base.html' %}
+{% block content %}
+<h1>Тренировки</h1>
+{% for t in trainings %}
+<div class="box">
+  <h3>{{ t.title }}</h3>
+  <p>{{ t.description }}</p>
+  <p>{{ t.price }} ₽, {{ t.duration }} мин.</p>
+  <p>{% if t.is_available %}Доступна{% else %}Недоступна{% endif %}</p>
+  {% if t.is_available %}<a class="btn btn-success" href="{% url 'booking_create' %}?training={{ t.id }}">Записаться</a>{% endif %}
+</div>
+{% empty %}<p>Тренировок пока нет.</p>{% endfor %}
+{% endblock %}
